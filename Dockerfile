@@ -23,4 +23,4 @@ COPY docker-entrypoint.sh $BASE_DIR
 RUN chmod +x $BASE_DIR/docker-entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--", "/opt/neuro/web-shell/docker-entrypoint.sh"]
-CMD ["ttyd", "screen", "-A", "-R", "neuro"]
+CMD ["ttyd", "screen", "-A", "-xR", "neuro"]
