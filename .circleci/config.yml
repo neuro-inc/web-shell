@@ -11,7 +11,6 @@ workflows:
       - docker/publish:
           cache_from: neuromation/web-shell:latest
           image: neuromation/web-shell
-          tag: $(date +%Y%m%d).$CIRCLE_BUILD_NUM,latest
           deploy: false
           filters:
             branches:
