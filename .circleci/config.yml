@@ -1,0 +1,20 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@0.5.20
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - docker/publish:
+          cache_from: neuromation/web-shell:latest
+          image: neuromation/web-shell
+          deploy: false
+          context: org-dev
+          filters:
+            branches:
+              ignore:
+                - master
+                - /release.*/
