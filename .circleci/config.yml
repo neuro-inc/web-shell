@@ -11,14 +11,12 @@ workflows:
       - docker/publish:
           cache_from: neuromation/web-shell:latest
           image: neuromation/web-shell
-          tag: $(date +%Y%m%d)
+          tag: $(date +%Y%m%d).$CIRCLE_BUILD_NUM,latest
           deploy: false
-          context: org-dev
           filters:
             branches:
               ignore:
                 - master
-                - /release.*/
 
   master:
     jobs:
@@ -37,7 +35,7 @@ workflows:
       - docker/publish:
           cache_from: neuromation/web-shell:latest
           image: neuromation/web-shell
-          tag: $(date +%Y%m%d).$CIRCLE_BUILD_NUM,$CIRCLE_TAG,latest
+          tag: $CIRCLE_TAG,latest
           context: org-staging
           filters:
             branches:
