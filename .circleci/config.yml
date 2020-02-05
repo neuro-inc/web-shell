@@ -19,3 +19,29 @@ workflows:
               ignore:
                 - master
                 - /release.*/
+
+  master:
+    jobs:
+      - docker/publish:
+          cache_from: neuromation/web-shell:latest
+          image: neuromation/web-shell
+          tag: $(date +%Y%m%d).$CIRCLE_BUILD_NUM
+          context: org-dev
+          filters:
+            branches:
+              only:
+                - master
+
+  release:
+    jobs:
+      - docker/publish:
+          cache_from: neuromation/web-shell:latest
+          image: neuromation/web-shell
+          tag: $(date +%Y%m%d).$CIRCLE_BUILD_NUM,$CIRCLE_TAG,latest
+          context: org-staging
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only:
+                - /.*/
