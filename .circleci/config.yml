@@ -11,6 +11,7 @@ workflows:
       - docker/publish:
           cache_from: neuromation/web-shell:latest
           image: neuromation/web-shell
+          tag: $CIRCLE_BUILD_NUM
           deploy: false
           context: org-dev
           filters:
