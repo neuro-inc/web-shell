@@ -20,7 +20,10 @@ EXPOSE 7681
 ENV SHELL=/bin/bash
 
 COPY docker-entrypoint.sh $BASE_DIR
+COPY neuro.readme $BASE_DIR/readme
 RUN chmod +x $BASE_DIR/docker-entrypoint.sh
+
+RUN apt-get install -y lynx pandoc vim
 
 ENTRYPOINT ["/sbin/tini", "--", "/opt/neuro/web-shell/docker-entrypoint.sh"]
 CMD ["ttyd", "screen", "-A", "-xR", "neuro"]

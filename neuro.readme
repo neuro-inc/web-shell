@@ -1,0 +1,35 @@
+                                                           
+    _/      _/  _/_/_/_/  _/    _/  _/_/_/      _/_/       
+   _/_/    _/  _/        _/    _/  _/    _/  _/    _/      
+  _/  _/  _/  _/_/_/    _/    _/  _/_/_/    _/    _/       
+ _/    _/_/  _/        _/    _/  _/    _/  _/    _/        
+_/      _/  _/_/_/_/    _/_/    _/    _/    _/_/           
+                                                           
+                                              _/_/_/_/_/   
+
+Welcome to Neuro Platform!
+
+You are already logged in.
+
+
+To see the list of your jobs, run:
+
+  neuro ps
+
+
+Run a simple job:
+
+  neuro run -s cpu-small alpine:latest echo 'Hello, World!'
+
+
+Create a project and run a Jupyter notebook:
+
+  neuro project init
+  cd <project slug>
+  make setup
+  make jupyter
+
+Open a link suggested by the last command and dive into a Jupyter notebook session.
+
+
+Visit our docs at https://neu.ro/docs for more details.
