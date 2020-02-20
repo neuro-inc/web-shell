@@ -30,7 +30,13 @@ Create a project and run a Jupyter notebook:
   make setup
   make jupyter
 
-Open a link suggested by the last command and dive into a Jupyter notebook session.
+Open the link suggested by the last command and dive into a Jupyter notebook session.
 
+
+Please don't forget to kill your jobs!
+
+  make kill-jupyter          # kill jupyter only
+  neuro kill $(neuro -q ps)  # kill all active jobs
+  neuro kill $(hostname)     # kill current shell only
 
 Visit our docs at https://neu.ro/docs for more details.
