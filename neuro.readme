@@ -1,14 +1,14 @@
 
 
-    _/      _/  _/_/_/_/  _/    _/  _/_/_/      _/_/
-   _/_/    _/  _/        _/    _/  _/    _/  _/    _/
-  _/  _/  _/  _/_/_/    _/    _/  _/_/_/    _/    _/
- _/    _/_/  _/        _/    _/  _/    _/  _/    _/
-_/      _/  _/_/_/_/    _/_/    _/    _/    _/_/
+    _/      _/                                             
+   _/_/    _/    _/_/    _/    _/      _/  _/_/    _/_/    
+  _/  _/  _/  _/_/_/_/  _/    _/      _/_/      _/    _/   
+ _/    _/_/  _/        _/    _/      _/        _/    _/    
+_/      _/    _/_/_/    _/_/_/  _/  _/          _/_/       
+                                                           
+                                                           
 
-                                              _/_/_/_/_/
-
-Welcome to Neuro Platform!
+Welcome to Neu.ro!
 
 You are already logged in.
 
@@ -39,4 +39,4 @@ Please don't forget to kill your jobs!
   neuro kill $(neuro -q ps)  # kill all active jobs
   neuro kill $(hostname)     # kill current shell only
 
-Visit our docs at https://neu.ro/docs for more details.
+Visit our docs at https://docs.neu.ro for more details.
