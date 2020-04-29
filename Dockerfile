@@ -17,7 +17,7 @@ RUN apt update && apt install -y \
 
 EXPOSE 7681
 
-ENV SHELL=/bin/bash
+ENV SHELL=/bin/bash WORKDIR=/root
 
 COPY docker-entrypoint.sh $BASE_DIR
 COPY neuro.readme $BASE_DIR/readme
