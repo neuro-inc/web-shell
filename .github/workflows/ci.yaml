@@ -36,7 +36,7 @@ jobs:
       - name: Set up env vars 
         if: github.ref == 'refs/heads/master'
         run: |
-          echo ::set-env name=TAGS::"$(date +%Y%m%d).$GITHUB_RUN_NUMBER"
+          echo ::set-env name=TAGS::"$(date +%Y%m%d).debug-$GITHUB_RUN_NUMBER"
      
       - name: Set up env vars for release
         if: startsWith(github.ref, 'refs/tags/')
@@ -51,6 +51,5 @@ jobs:
           test "$TAGS"  # assert $TAGS not empty
           for tag in $(echo $TAGS | tr "," " ")
           do
-            echo "Publishing image $IMAGE_NAME:$tag"
             echo docker push $IMAGE_NAME:$tag
           done
