@@ -23,6 +23,7 @@ jobs:
     name: Publish auto-built image
     runs-on: ubuntu-latest
     needs: build
+    if: (github.event_name == 'release' || github.ref == 'refs/heads/master')
     env:
       DOCKER_SERVER: docker.io
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -46,8 +47,10 @@ jobs:
         run: |
           set -x
           docker login $DOCKER_SERVER --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-          # NOTE: if branch != 'master' and no tags, then $TAGS will be empty
+          
+          test "$TAGS"  # assert $TAGS not empty
           for tag in $(echo $TAGS | tr "," " ")
           do
+            echo "Publishing image $IMAGE_NAME:$tag"
             echo docker push $IMAGE_NAME:$tag
           done
