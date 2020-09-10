@@ -22,7 +22,7 @@ jobs:
 
       - name: Docker Build
         run: |
-          make build IMAGE_NAME=$(IMAGE_NAME)
+          make build
 
       - name: Setup Environment Variables
         if: (github.event_name == 'release' && startsWith(github.ref, 'refs/tags/'))
