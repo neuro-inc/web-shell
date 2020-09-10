@@ -1,2 +1,4 @@
+IMAGE_NAME=neuro-web-shell
+
 build:
-	docker build -t neuro-web-shell:latest .
+	docker build -t $(IMAGE):latest .
