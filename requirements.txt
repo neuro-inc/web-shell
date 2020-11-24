@@ -1,1 +1,1 @@
-neuromation==20.9.3
+neuromation==20.11.18
