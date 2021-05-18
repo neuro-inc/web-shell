@@ -24,12 +24,14 @@ Run a simple job:
   neuro run alpine:latest echo 'Hello, World!'
 
 
-Create a project and run a Jupyter notebook:
+Create a project, upload project files and run a Jupyter notebook:
 
   neuro project init
   cd <project slug>
-  neuro-flow build 
-  neuro-flow run jupyter
+  neuro-flow build
+  neuro-flow mkvolumes
+  neuro-flow upload ALL
+  neuro-flow run jupyter --suffix trial
 
 Open the link suggested by the last command and dive into a Jupyter notebook session.
 
