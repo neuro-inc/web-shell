@@ -13,30 +13,29 @@ Welcome to Neu.ro!
 You are already logged in.
 
 
-To list all possible commands in platform CLI and pipeline engine, run:
+To see the list of your jobs, run:
 
-  neuro --help
-  neuro-flow --help
+  neuro ps
 
 
 Run a simple job:
 
-  neuro run alpine:latest echo 'Hello, World!'
+  neuro run -s cpu-small alpine:latest echo 'Hello, World!'
 
 
 Create a project and run a Jupyter notebook:
 
   neuro project init
   cd <project slug>
-  neuro-flow build 
-  neuro-flow run jupyter
+  make setup
+  make jupyter
 
 Open the link suggested by the last command and dive into a Jupyter notebook session.
 
 
 Please don't forget to kill your jobs!
 
-  neuro-flow kill jupyter          # kill jupyter only
+  make kill-jupyter          # kill jupyter only
   neuro kill $(neuro -q ps)  # kill all active jobs
   neuro kill $(hostname)     # kill current shell only
 
