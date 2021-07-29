@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: daily
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - neuro-inc/mlops
+    insecure-external-code-execution: allow
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
