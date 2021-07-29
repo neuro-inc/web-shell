@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_NAME: neuromation/web-shell
-      IMAGE_TAG: ${GITHUB_REF#refs/tags/}
+      IMAGE_TAG: ${{ github.event.pull_request.head.sha }}
     steps:
       - name: Checkout commit
         uses: actions/checkout@v2
