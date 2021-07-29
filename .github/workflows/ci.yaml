@@ -47,6 +47,8 @@ jobs:
 
       - name: Sanity test
         run: |
+          neuro run ubuntu echo hi
+          neuro run --pass-config ubuntu echo hi
           IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG make sanity-test
       
       - name: Cleanup
