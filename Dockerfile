@@ -6,10 +6,10 @@ RUN chmod +x /usr/bin/ttyd
 ADD https://github.com/krallin/tini/releases/download/v0.18.0/tini /sbin/tini
 RUN chmod +x /sbin/tini
 
-ARG BASE_DIR=/opt/neuro/web-shell
+ARG BASE_DIR=/opt/neuro/web-shell/
 RUN mkdir -p $BASE_DIR
 
-COPY requirements/apt.txt ./requirements/python.txt $BASE_DIR
+COPY requirements/apt.txt requirements/python.txt $BASE_DIR
 RUN apt update -qq && \
     cat $BASE_DIR/apt.txt | tr -d "\r" | xargs -I % apt install -qq -y --no-install-recommends % && \
     ln -s $(which python3.8) /usr/bin/python && \
