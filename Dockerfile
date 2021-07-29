@@ -23,10 +23,7 @@ EXPOSE 7681
 ENV SHELL=/bin/bash WORKDIR=/root
 
 COPY docker-entrypoint.sh neuro.readme $BASE_DIR
-RUN chmod +x $BASE_DIR/docker-entrypoint.sh && \
-    # https://github.com/neuro-inc/platform-client-python/issues/2232
-    mkdir -p /root/.neuro && \
-    chmod 700 /root/.neuro
+RUN chmod +x $BASE_DIR/docker-entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--", "/opt/neuro/web-shell/docker-entrypoint.sh"]
 CMD ["ttyd", "screen", "-A", "-xR", "neuro"]

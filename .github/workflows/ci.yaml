@@ -36,8 +36,6 @@ jobs:
         run: |
           python -m pip install -r requirements/python.txt
           neuro config login-with-token ${{ secrets.NEURO_TOKEN }} ${{ secrets.NEURO_STAGING_URL }}
-          # https://github.com/neuro-inc/platform-client-python/issues/2232
-          chmod 700 /home/runner/.neuro
           neuro config switch-cluster ${{ secrets.MLOPS_E2E_TESTS_CLUSTER }}
 
       - name: Build and push image to the platform
@@ -47,8 +45,6 @@ jobs:
 
       - name: Sanity test
         run: |
-          neuro run ubuntu echo hi
-          neuro run --pass-config ubuntu echo hi
           IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG make sanity-test
       
       - name: Cleanup
