@@ -1,0 +1,6 @@
+build-essential
+git
+curl
+screen
+python3.8-dev
+python3-pip

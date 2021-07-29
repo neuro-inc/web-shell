@@ -1,2 +1,0 @@
-neuro-cli>=v21.5.17
-neuro-flow>=v21.5.17

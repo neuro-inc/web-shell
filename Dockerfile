@@ -6,23 +6,23 @@ RUN chmod +x /usr/bin/ttyd
 ADD https://github.com/krallin/tini/releases/download/v0.18.0/tini /sbin/tini
 RUN chmod +x /sbin/tini
 
-ARG BASE_DIR=/opt/neuro/web-shell
+ARG BASE_DIR=/opt/neuro/web-shell/
 RUN mkdir -p $BASE_DIR
 
-COPY requirements.txt $BASE_DIR
-RUN apt update && apt install -y --no-install-recommends \
-    build-essential git curl screen python3.8-dev python3-pip && \
+COPY requirements/apt.txt requirements/python.txt $BASE_DIR
+RUN apt update -qq && \
+    cat $BASE_DIR/apt.txt | tr -d "\r" | xargs -I % apt install -qq -y --no-install-recommends % && \
     ln -s $(which python3.8) /usr/bin/python && \
     python3.8 -m pip install -U pip && \
-    pip3 install -U --no-cache-dir -r $BASE_DIR/requirements.txt && \
-    apt autoclean && apt autoremove -y --purge && rm -rf /var/lib/apt/lists/*
+    pip3 install -U --no-cache-dir -r $BASE_DIR/python.txt && \
+    apt autoclean && apt autoremove -y --purge && rm -rf /var/lib/apt/lists/* && \
+    rm $BASE_DIR/*
 
 EXPOSE 7681
 
 ENV SHELL=/bin/bash WORKDIR=/root
 
-COPY docker-entrypoint.sh $BASE_DIR
-COPY neuro.readme $BASE_DIR/readme
+COPY docker-entrypoint.sh neuro.readme $BASE_DIR
 RUN chmod +x $BASE_DIR/docker-entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--", "/opt/neuro/web-shell/docker-entrypoint.sh"]
