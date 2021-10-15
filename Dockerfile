@@ -10,9 +10,10 @@ ARG BASE_DIR=/opt/neuro/web-shell
 RUN mkdir -p $BASE_DIR
 
 COPY requirements/apt.txt requirements/python.txt $BASE_DIR/
-RUN apt update -qq && \
+RUN apt-get update -qq && \
     export DEBIAN_FRONTEND=noninteractive && \
-    xargs -ra $BASE_DIR/apt.txt apt install -qq -y --no-install-recommends  && \
+    apt-get install -qq -y --no-install-recommends software-properties-common && \
+    xargs -ra $BASE_DIR/apt.txt apt-get install -qq -y --no-install-recommends  && \
     ln -s $(which python3) /usr/bin/python && \
     python -m pip install -U pip && \
     pip3 install -U --no-cache-dir -r $BASE_DIR/python.txt && \
