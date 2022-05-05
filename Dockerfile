@@ -15,8 +15,8 @@ RUN apt-get update -qq && \
     apt-get install -qq -y --no-install-recommends software-properties-common && \
     xargs -ra $BASE_DIR/apt.txt apt-get install -qq -y --no-install-recommends  && \
     ln -s $(which python3) /usr/bin/python && \
-    python -m pip install -U pip pipx && \
-    cat $BASE_DIR/python.txt | xargs -rn 1 pipx install && \
+    python -m pip install -U pip && \
+    pip3 install -U --no-cache-dir -r $BASE_DIR/python.txt && \
     apt autoclean && apt autoremove -y --purge && rm -rf /var/lib/apt/lists/* && \
     rm $BASE_DIR/*
 
