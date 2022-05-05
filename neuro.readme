@@ -26,10 +26,9 @@ Run a simple job:
 
 Create a project, upload project files and run a Jupyter notebook:
 
-  neuro project init
-  cd <project slug>
-  neuro-flow build
-  neuro-flow mkvolumes
+  cookiecutter gh:neuro-inc/cookiecutter-neuro-project --checkout release
+  cd <project directory>
+  neuro-flow build train
   neuro-flow upload ALL
   neuro-flow run jupyter --suffix trial
 
@@ -38,8 +37,8 @@ Open the link suggested by the last command and dive into a Jupyter notebook ses
 
 Please don't forget to kill your jobs!
 
-  neuro-flow kill jupyter          # kill jupyter only
-  neuro kill $(neuro -q ps)  # kill all active jobs
-  neuro kill $(hostname)     # kill current shell only
+  neuro-flow kill jupyter trial   # kill jupyter only
+  neuro kill $(neuro -q ps)       # kill all active jobs
+  neuro kill $(hostname)          # kill current shell only
 
 Visit our docs at https://docs.neu.ro for more details.
