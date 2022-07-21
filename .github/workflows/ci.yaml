@@ -34,7 +34,7 @@ jobs:
         run: |
           python -m pip install -r requirements/python.txt
           neuro config login-with-token ${{ secrets.NEURO_TOKEN }} ${{ secrets.NEURO_STAGING_URL }}
-          neuro config switch-cluster ${{ secrets.MLOPS_E2E_TESTS_CLUSTER }}
+          neuro config switch-cluster green-hgx-1
 
       - name: Build and push image to the platform
         run: |
