@@ -83,7 +83,7 @@ jobs:
       - name: Push image
         run: |
           set -x
-          for tag in $(echo "latest,${GITHUB_REF#refs/tags/}" | tr "," " ")
+          for tag in $(echo "latest,pipelines,${GITHUB_REF#refs/tags/}" | tr "," " ")
           do
             docker tag $IMAGE_NAME $IMAGE_NAME:$tag && docker push $IMAGE_NAME:$tag
             docker tag $IMAGE_NAME $LEGACY_IMAGE_NAME:$tag && docker push $LEGACY_IMAGE_NAME:$tag
