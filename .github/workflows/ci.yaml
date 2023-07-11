@@ -19,7 +19,7 @@ jobs:
     env:
       IMAGE_NAME: neuromation/web-shell
       IMAGE_TAG: ${{ github.event.pull_request.head.sha || github.sha }}
-      CLUSTER_NAME: onprem-poc
+      CLUSTER_NAME: default
     steps:
       - name: Checkout commit
         uses: actions/checkout@v3
