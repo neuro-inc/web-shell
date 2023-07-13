@@ -1,1 +1,2 @@
-neuro-all==22.8.1
+cookiecutter==2.2.2
+neuro-all==23.7.0
