@@ -22,7 +22,7 @@ jobs:
       CLUSTER_NAME: default
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
@@ -61,7 +61,7 @@ jobs:
       LEGACY_IMAGE_NAME: neuromation/web-shell
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Login to ghcr.io
         uses: docker/login-action@v2.1.0
