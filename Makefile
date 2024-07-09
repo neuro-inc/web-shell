@@ -3,7 +3,7 @@ build:
 
 sanity-test:
 	neuro -v run --pass-config image:${IMAGE_NAME}:${IMAGE_TAG} -- bash -euo pipefail -c "\
-		neuro --version; \
-		neuro config show; \
-		neuro-flow --version; \
+		apolo --version; \
+		apolo config show; \
+		apolo-flow --version; \
 	"

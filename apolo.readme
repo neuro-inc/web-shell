@@ -1,0 +1,50 @@
+                                                                                                    
+          .                                                                                
+         -##.                                                                              
+        -**##:                                                   +@@@                      
+       +***** :                                                  +@@@                      
+      +***** -=-           =@@@@@%#@@@ .@@@.@@@@@@.   :@@@@@@@:  +@@@   +@@@@@@%.          
+     +++**+               @@@@@#%@@@@@ .@@@@@#%@@@@# @@@@@#@@@@@ +@@@  @@@@@#@@@@#         
+   .+++++=  ******       =@@@-    %@@@ .@@@-    %@@@*@@@    .@@@*+@@@ %@@@    =@@@:        
+   ===++-    =*****      =@@@:    %@@@ .@@@.    *@@@*@@@    .@@@#+@@@ @@@@    -@@@:        
+ .=====.      =*****      @@@@#:=@@@@@ .@@@@#:-@@@@%.@@@@+:*@@@@ +@@@ :@@@@-:#@@@@         
+.--===.        .*****.     %@@@@@@#@@@ .@@@-@@@@@@-   #@@@@@@@*  +@@@  .@@@@@@@@-          
+                                       .@@@                                                
+                                       .@@@                                                
+                                       .@@@                                                
+                                                                                                    
+                                                                                                    
+Welcome to Apolo!
+
+You are already logged in.
+
+
+To list all possible commands in platform CLI and pipeline engine, run:
+
+  apolo --help
+  apolo-flow --help
+
+
+Run a simple job:
+
+  apolo run alpine:latest echo 'Hello, World!'
+
+
+Create a project, upload project files and run a Jupyter notebook:
+
+  cookiecutter gh:neuro-inc/cookiecutter-neuro-project --checkout release
+  cd <project directory>
+  apolo-flow build train
+  apolo-flow upload ALL
+  apolo-flow run jupyter --suffix trial
+
+Open the link suggested by the last command and dive into a Jupyter notebook session.
+
+
+Please don't forget to kill your jobs!
+
+  apolo-flow kill jupyter trial   # kill jupyter only
+  apolo kill $(apolo -q ps)       # kill all active jobs
+  apolo kill $(hostname)          # kill current shell only
+
+Visit our docs at https://docs.neu.ro for more details.
