@@ -19,9 +19,9 @@ RUN apt-get update -qq && \
     pip3 install -U --no-cache-dir -r $BASE_DIR/python.txt --break-system-packages  && \
     apt autoclean && apt autoremove -y --purge && rm -rf /var/lib/apt/lists/* && \
     rm $BASE_DIR/* && \
-    echo alias apolo=neuro >> /root/.bashrc && \
-    echo alias apolo-flow=neuro-flow >> /root/.bashrc && \
-    echo alias apolo-extras=neuro-extras >> /root/.bashrc
+    ln -s $(which neuro) /usr/bin/apolo && \
+    ln -s $(which neuro-flow) /usr/bin/apolo-flow && \
+    ln -s $(which neuro-extras) /usr/bin/apolo-extras
 
 EXPOSE 7681
 
