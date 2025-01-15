@@ -1,2 +1,2 @@
 cookiecutter==2.6.0
-neuro-all==24.7.0
+apolo-all==25.1.0

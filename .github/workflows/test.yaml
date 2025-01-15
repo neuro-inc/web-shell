@@ -1,0 +1,40 @@
+on:
+  workflow_call: {}
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: apolo/web-shell
+      IMAGE_TAG: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Setup and configure apolo-all
+        run: |
+          make setup
+          apolo config login-with-token ${{ secrets.CLIENT_TEST_E2E_USER_NAME }} https://api.dev.apolo.us/api/v1
+          apolo config show
+
+      - name: Build and push image to the platform
+        run: |
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
+          apolo image push $IMAGE_NAME:$IMAGE_TAG image:$IMAGE_NAME:$IMAGE_TAG
+
+      - name: Sanity test
+        run: |
+          IMAGE_NAME=$IMAGE_NAME IMAGE_TAG=$IMAGE_TAG make sanity-test
+
+      - name: Cleanup
+        if: ${{ always() }}
+        run: |
+          apolo image rm -f image:$IMAGE_NAME:$IMAGE_TAG || echo Image does not exist

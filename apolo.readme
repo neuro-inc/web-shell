@@ -32,7 +32,8 @@ Run a simple job:
 
 Create a project, upload project files and run a Jupyter notebook:
 
-  cookiecutter gh:neuro-inc/cookiecutter-neuro-project --checkout release
+  apolo-flow init
+  # Follow the instructions
   cd <project directory>
   apolo-flow build train
   apolo-flow upload ALL
@@ -47,4 +48,4 @@ Please don't forget to kill your jobs!
   apolo kill $(apolo -q ps)       # kill all active jobs
   apolo kill $(hostname)          # kill current shell only
 
-Visit our docs at https://docs.neu.ro for more details.
+Visit our docs at https://docs.apolo.us for more details.
