@@ -1,2 +1,2 @@
 cookiecutter==2.6.0
-apolo-all==25.1.0
+apolo-all==25.5.0
